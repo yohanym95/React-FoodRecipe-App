@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'
 import '../App.css'
 import {
   Container,
-  Row,
   Col,
   InputGroup,
   FormControl,
   Button
 } from 'react-bootstrap'
 import RecipeItem from '../components/recipeItem'
+import { GridList } from '@material-ui/core'
 
 function Recipe () {
   const APP_ID = 'f04328f2'
@@ -30,7 +30,7 @@ function Recipe () {
     <Container>
       <Col>
         <Container>
-          <InputGroup className='mb-3 pt-3'>
+          <InputGroup className='p-3'>
             <FormControl
               placeholder='Search Food Item'
               aria-label='Search Food Item'
@@ -41,10 +41,12 @@ function Recipe () {
             </InputGroup.Append>
           </InputGroup>
         </Container>
-        <Container className='pt-5'>
-          {recipes.map((recipes, id) => (
-            <RecipeItem recipes={recipes} key={id} />
-          ))}
+        <Container className='pb-5'>
+          <GridList cellHeight={200} cols={3}>
+            {recipes.map((recipes, id) => (
+              <RecipeItem recipes={recipes} />
+            ))}
+          </GridList>
         </Container>
       </Col>
     </Container>
