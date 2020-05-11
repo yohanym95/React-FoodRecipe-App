@@ -64,9 +64,9 @@ function Recipe () {
         </Container>
         <Container className='pb-5'>
           <GridList cellHeight={200} cols={3}>
-            {recipes.map((recipes, id) => (
-              <RecipeItem recipes={recipes} key={id} />
-            ))}
+            {recipes.map((recipes, id) => {
+              return <RecipeItem recipes={recipes} key={id} ItemId={id} category={query} />
+            })}
           </GridList>
         </Container>
       </Col>
