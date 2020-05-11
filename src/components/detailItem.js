@@ -16,7 +16,9 @@ function DetailItem (props) {
   }, [food])
 
   const getRecipes = async () => {
-    setQuery(props.location.aboutProps.name)
+    if (props.location.aboutProps !== undefined) {
+      setQuery(props.location.aboutProps.name)
+    }
     const response = await fetch(apiRequest)
     const data = await response.json()
     console.log(data.hits[props.match.params.id])
